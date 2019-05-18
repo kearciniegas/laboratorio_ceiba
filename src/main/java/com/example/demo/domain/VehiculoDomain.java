@@ -7,5 +7,9 @@ import com.example.demo.entity.Vehiculo;
 public interface VehiculoDomain{
 
 	List<Vehiculo> findAll();
+
+	void save(Vehiculo vehiculo);
+
+	Vehiculo findByPlaca(Vehiculo vehiculo);
 	
 }

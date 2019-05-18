@@ -2,40 +2,46 @@ package com.example.demo.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name = "pago")
 public class Pago {
 
-	private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private long idPago;
+
+	@Column
 	private double valor;
-	private Registro registro;
+
+	@Column
+	private long idRegistro;
+
+	@Column
 	private String usuarioRegistro;
+
+	@Column
 	private Date fechaRegistro;
-
-	public Pago() {
+	
+	public Pago(long idPago, double valor, long idRegistro, String usuarioRegistro, Date fechaRegistro) {
 		super();
-	}
-
-	public Pago(long id, double valor, Registro registro, String usuarioRegistro, Date fechaRegistro) {
-		super();
-		this.id = id;
+		this.idPago = idPago;
 		this.valor = valor;
-		this.registro = registro;
+		this.idRegistro = idRegistro;
 		this.usuarioRegistro = usuarioRegistro;
 		this.fechaRegistro = fechaRegistro;
 	}
-
-	public Pago(double valor, Registro registro, String usuarioRegistro) {
-		this.valor = valor;
-		this.registro = registro;
-		this.usuarioRegistro = usuarioRegistro;
-		this.fechaRegistro = new Date();
+	
+	public long getIdPago() {
+		return idPago;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
+	public void setIdPago(long idPago) {
+		this.idPago = idPago;
 	}
 
 	public double getValor() {
@@ -46,12 +52,12 @@ public class Pago {
 		this.valor = valor;
 	}
 
-	public Registro getRegistro() {
-		return registro;
+	public long getIdRegistro() {
+		return idRegistro;
 	}
 
-	public void setRegistro(Registro registro) {
-		this.registro = registro;
+	public void setIdRegistro(long idRegistro) {
+		this.idRegistro = idRegistro;
 	}
 
 	public String getUsuarioRegistro() {
@@ -69,5 +75,5 @@ public class Pago {
 	public void setFechaRegistro(Date fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
-
+	
 }

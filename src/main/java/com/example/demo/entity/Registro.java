@@ -4,12 +4,13 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Column;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity(name = "registro")
 public class Registro {
@@ -17,30 +18,26 @@ public class Registro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
-
-	@ManyToOne(optional = false, fetch = FetchType.EAGER)
-	@JoinColumn(name = "vehiculo")
+	
+	@ManyToOne
+	@JoinColumn(name="vehiculo")
 	private Vehiculo vehiculo;
-
-	@Column(nullable = false)
 	private Date fechInicio;
-	
-	@Column
 	private Date fechFin;
-	
-	@Column
 	private String usuarioRegistro;
-	
-	@Column
 	private Date fechaRegistro;
-	
-	public Registro(long id, Vehiculo vehiculo, Date fechInicio, Date fechFin, String usuarioRegistro, Date fechaRegistro) {
+
+	public Registro(long id, Vehiculo vehiculo, Date fechInicio, Date fechFin, String usuarioRegistro,
+			Date fechaRegistro) {
 		super();
-		this.id= id;
-		this.vehiculo=vehiculo;
+		this.id = id;
+		this.vehiculo = vehiculo;
 		this.fechInicio = fechInicio;
 		this.fechFin = fechFin;
+		this.usuarioRegistro = usuarioRegistro;
+		this.fechaRegistro = fechaRegistro;
 	}
+
 	public long getId() {
 		return id;
 	}

@@ -11,17 +11,22 @@ import com.example.demo.domain.VehiculoDomain;
 import com.example.demo.entity.Vehiculo;
 
 @RestController
-@RequestMapping("vehiculos")
+@RequestMapping("/vehiculos")
 public class VehiculoController {
 
 	private VehiculoDomain vehiculoDomain;
+
+	public VehiculoController() {
+		super();
+	}
 
 	@Autowired
 	public VehiculoController(VehiculoDomain vehiculoDomain) {
 		this.vehiculoDomain = vehiculoDomain;
 	}
 
-	@GetMapping
+
+	@GetMapping("/listVehiculos")
 	public List<Vehiculo> listado() {
 		return vehiculoDomain.findAll();
 	}
